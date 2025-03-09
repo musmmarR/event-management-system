@@ -1,0 +1,90 @@
+.admin-events-container {
+    padding: 24px;
+  
+    .filters-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+  
+      mat-form-field {
+        width: 100%;
+      }
+  
+      button {
+        align-self: center;
+        height: 56px; // Match form field height
+      }
+    }
+  
+    .table-container {
+      position: relative;
+      min-height: 200px;
+      overflow: auto;
+    }
+  
+    table {
+      width: 100%;
+  
+      .mat-column-actions {
+        width: 100px;
+        text-align: center;
+      }
+  
+      .mat-column-status {
+        width: 120px;
+      }
+  
+      .mat-column-participants {
+        width: 120px;
+        text-align: center;
+      }
+    }
+  
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+  
+      &.pending {
+        background-color: #fff3e0;
+        color: #e65100;
+      }
+  
+      &.approved {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+      }
+  
+      &.cancelled {
+        background-color: #ffebee;
+        color: #c62828;
+      }
+    }
+  
+    .no-data {
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
+  
+  // Responsive styles
+  @media (max-width: 960px) {
+    .admin-events-container {
+      padding: 16px;
+  
+      .filters-container {
+        grid-template-columns: 1fr;
+      }
+  
+      table {
+        .mat-column-creator,
+        .mat-column-location {
+          display: none;
+        }
+      }
+    }
+  }

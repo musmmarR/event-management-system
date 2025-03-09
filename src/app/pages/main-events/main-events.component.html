@@ -1,0 +1,48 @@
+<div class="container">
+<div class="events-container">
+    <div class="events-header">
+      <h1 style="font-weight: bolder;">Events</h1>
+      <button mat-raised-button color="primary" (click)="openEventDialog()">
+        <mat-icon>add</mat-icon>
+        Create Event
+      </button>
+    </div>
+@if(!loading) {
+    <div class="events-grid">
+      @for(event of events; track event._id) {
+      <mat-card  class="event-card">
+        <mat-card-content>
+          <h2>{{event.title}}</h2>
+          <p class="event-info">
+            <mat-icon>calendar_today</mat-icon>
+            {{event.date | date}} at {{event.time}}
+          </p>
+          <p class="event-info">
+            <mat-icon>location_on</mat-icon>
+            {{event.location}}
+          </p>
+          <p class="event-description">{{event.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <button mat-button color="primary">View Details</button> -->
+            <button mat-icon-button [matMenuTriggerFor]="eventMenu" 
+                    *ngIf="canManageEvent(event)">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #eventMenu="matMenu">
+              <button mat-menu-item (click)="openEventDialog(event)">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="deleteEvent(event)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </mat-card-actions>
+        </mat-card>
+      }
+      </div>
+    }
+    </div>
+    </div>

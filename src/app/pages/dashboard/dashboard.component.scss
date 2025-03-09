@@ -1,0 +1,152 @@
+.dashboard-container {
+    height: 100vh;
+  
+    .dashboard-sidenav {
+      width: 250px;
+      
+      .sidenav-header {
+        padding: 16px;
+        background: #3f51b5;
+        color: white;
+        
+        h2 {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+      }
+  
+      .mat-nav-list {
+        a.active {
+          background-color: rgba(63, 81, 181, 0.1);
+          color: #3f51b5;
+        }
+      }
+    }
+  
+    .mat-sidenav-content {
+      .mat-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+  
+        .toolbar-spacer {
+          flex: 1 1 auto;
+        }
+      }
+    }
+  
+    .content-wrapper {
+      padding: 20px;
+    }
+  }
+  
+  .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  
+    .stat-card {
+      .mat-card-content {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+  
+        .stat-icon {
+          margin-right: 16px;
+          
+          .mat-icon {
+            font-size: 40px;
+            width: 40px;
+            height: 40px;
+            color: #3f51b5;
+          }
+        }
+  
+        .stat-details {
+          h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #666;
+          }
+  
+          .stat-number {
+            margin: 8px 0 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+  
+  .events-card {
+    .event-list {
+      .event-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        padding: 16px;
+  
+        .event-date {
+          text-align: center;
+          margin-right: 16px;
+          min-width: 60px;
+  
+          .day {
+            font-size: 1.5rem;
+            font-weight: 500;
+            display: block;
+          }
+  
+          .month {
+            font-size: 0.9rem;
+            color: #666;
+          }
+        }
+  
+        .event-details {
+          flex: 1;
+  
+          h4 {
+            margin: 0 0 4px;
+          }
+  
+          p {
+            margin: 0;
+            color: #666;
+  
+            &.time {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-container {
+      .dashboard-sidenav {
+        width: 200px;
+      }
+    }
+  
+    .dashboard-stats {
+      grid-template-columns: 1fr;
+    }
+  
+    .event-item {
+      flex-direction: column;
+      text-align: center;
+  
+      .event-date {
+        margin-bottom: 16px;
+      }
+  
+      .event-details {
+        margin-bottom: 16px;
+      }
+    }
+  }

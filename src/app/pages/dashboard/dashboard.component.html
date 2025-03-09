@@ -1,0 +1,119 @@
+<mat-sidenav-container class="dashboard-container">
+    <mat-sidenav #sidenav mode="side" opened class="dashboard-sidenav">
+      <div class="sidenav-header">
+        <h2>{{ isAdmin ? 'Admin Panel' : 'Dashboard' }}</h2>
+      </div>
+      
+      <mat-nav-list>
+        <ng-container *ngFor="let item of menuItems">
+          <a mat-list-item [routerLink]="item.route" routerLinkActive="active">
+            <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+            <span matListItemTitle>{{item.label}}</span>
+          </a>
+        </ng-container>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>{{isAdmin ? 'Admin Dashboard' : 'My Dashboard'}}</span>
+        <span class="toolbar-spacer"></span>
+      </mat-toolbar>
+      <div class="content-wrapper">
+        <!-- Stats Cards -->
+        <div class="dashboard-stats">
+          <!-- Common Stats -->
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <div class="stat-icon">
+                <mat-icon>event</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h3>{{ isAdmin ? 'Total Events' : 'My Events' }}</h3>
+                <p class="stat-number">{{isAdmin  ? stats.totalEvents : stats.eventsCreated}}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <div class="stat-icon">
+                <mat-icon>calendar_today</mat-icon>
+              </div>
+              <div class="stat-details">
+                <h3>Upcoming Events</h3>
+                <p class="stat-number">{{stats.upcomingEvents}}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+             <!-- Admin-only Stats -->
+             <ng-container *ngIf="isAdmin">
+                <mat-card class="stat-card">
+                  <mat-card-content>
+                    <div class="stat-icon">
+                      <mat-icon>people</mat-icon>
+                    </div>
+                    <div class="stat-details">
+                      <h3>Total Users</h3>
+                      <p class="stat-number">{{stats.userEvents}}</p>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+  
+                <mat-card class="stat-card">
+                  <mat-card-content>
+                    <div class="stat-icon">
+                      <mat-icon>pending_actions</mat-icon>
+                    </div>
+                    <div class="stat-details">
+                      <h3>Pending Events</h3>
+                      <p class="stat-number">{{stats.pendingEvents}}</p>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </ng-container>  
+                <!-- User-only Stats -->
+            <ng-container *ngIf="!isAdmin">
+              <mat-card class="stat-card">
+                <mat-card-content>
+                  <div class="stat-icon">
+                    <mat-icon>pending_actions</mat-icon>
+                  </div>
+                  <div class="stat-details">
+                    <h3>Pending Events</h3>
+                    <p class="stat-number">{{stats.pendingEvents}}</p>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+              </ng-container>
+            </div>
+             <!-- Events List -->
+          <!-- <mat-card class="events-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{ isAdmin ? 'Recent Events' : 'My Upcoming Events' }}
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="event-list">
+                <mat-card class="event-item" *ngFor="let event of events">
+                  <div class="event-date">
+                    <span class="day">{{event.date | date:'dd'}}</span>
+                    <span class="month">{{event.date | date:'MMM'}}</span>
+                  </div>
+                  <div class="event-details">
+                    <h4>{{event.title}}</h4>
+                    <p>{{event.location}}</p>
+                    <p class="time">{{event.date | date:'shortTime'}}</p>
+                  </div>
+                  <button mat-button color="primary">View Details</button>
+                </mat-card>
+              </div>
+            </mat-card-content>
+          </mat-card> -->
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>

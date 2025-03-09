@@ -1,0 +1,47 @@
+.events-container {
+    padding: 24px;
+  
+    .mat-card {
+      .mat-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+  
+        .create-button {
+          margin-left: auto;
+        }
+      }
+    }
+  
+    table {
+      width: 100%;
+    }
+  
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+  
+      &.pending {
+        background-color: #fff3e0;
+        color: #e65100;
+      }
+  
+      &.approved {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+      }
+  
+      &.cancelled {
+        background-color: #ffebee;
+        color: #c62828;
+      }
+    }
+  
+    .mat-column-actions {
+      width: 100px;
+      text-align: right;
+    }
+  }

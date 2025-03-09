@@ -1,0 +1,32 @@
+@if (event) {
+    <div class="event-join-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{event.title}}</mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <p>{{event.description}}</p>
+          <div class="event-details">
+            <p><strong>Date:</strong> {{event.date | date:'medium'}}</p>
+            <p><strong>Location:</strong> {{event.location}}</p>
+            <p><strong>Participants:</strong> {{event.participants.length}}/{{event.maxParticipants}}</p>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button 
+                  color="primary" 
+                  (click)="joinEvent()"
+                  [disabled]="isJoined || isFull">
+            {{ getButtonText() }}
+          </button>
+          <button mat-button (click)="goBack()">Back</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  } @else {
+    <div class="loading-container">
+      <p>Loading event details...</p>
+    </div>
+  }

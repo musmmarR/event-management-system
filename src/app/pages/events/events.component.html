@@ -1,0 +1,56 @@
+<div class="events-page">
+    <div class="container">
+      <div class="filters-section">
+        <mat-form-field appearance="outline">
+          <mat-label>Search Events</mat-label>
+          <input matInput placeholder="Search by name or location">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select>
+            <mat-option value="all">All Categories</mat-option>
+            <mat-option value="music">Music</mat-option>
+            <mat-option value="sports">Sports</mat-option>
+            <mat-option value="tech">Technology</mat-option>
+            <!-- Add more categories -->
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="events-grid">
+        <!-- Example Event Card -->
+        <mat-card class="event-card" *ngFor="let i of [1,2,3,4,5,6]">
+          <mat-card-content>
+            <h3>Event Title</h3>
+            <p class="date">
+              <mat-icon>calendar_today</mat-icon>
+              March 15, 2024
+            </p>
+            <p class="location">
+              <mat-icon>location_on</mat-icon>
+              New York, NY
+            </p>
+            <p class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button color="primary">Learn More</button> -->
+            <button mat-raised-button color="primary">Join Event</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      
+      <div class="pagination">
+        <!-- Add pagination controls here -->
+      </div>
+    </div>
+  </div>

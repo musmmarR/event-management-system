@@ -1,0 +1,32 @@
+.form-row {
+    margin-bottom: 1rem;
+    
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .form-row-inline {
+    display: flex;
+    gap: 1rem;
+    
+    mat-form-field {
+      flex: 1;
+    }
+  }
+
+  .file-name {
+    margin-left: 1rem;
+    color: #666;
+  }
+  .full-width {
+    width: 100%;
+  }
+  
+  ::ng-deep .mat-select-panel {
+    max-height: 300px !important;
+  }
+  
+  ::ng-deep .mat-select-search-input {
+    padding: 10px !important;
+  }
